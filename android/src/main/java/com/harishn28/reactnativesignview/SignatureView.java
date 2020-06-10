@@ -91,6 +91,13 @@ public class SignatureView extends View {
             RectF signBoundingRectangle = new RectF();
             currentPath.computeBounds(signBoundingRectangle, true);
 
+            signBoundingRectangle.set(
+                signBoundingRectangle.left - paint.getStrokeWidth() * 2,
+                signBoundingRectangle.top - paint.getStrokeWidth() * 2,
+                signBoundingRectangle.right + paint.getStrokeWidth() * 2,
+                signBoundingRectangle.bottom + paint.getStrokeWidth() * 2
+            );
+
             float signBoundsWidth = signBoundingRectangle.width();
             float signBoundsHeight = signBoundingRectangle.height();
 
@@ -100,6 +107,7 @@ public class SignatureView extends View {
 
                 Bitmap bitmap = Bitmap.createBitmap((int)canvasWidth, (int)canvasHeight, Bitmap.Config.ARGB_8888);
                 Canvas c = new Canvas(bitmap);
+                c.drawColor(Color.WHITE);
 
                 this.draw(c);
 

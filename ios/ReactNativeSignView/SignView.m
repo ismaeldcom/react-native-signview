@@ -113,6 +113,11 @@
         CGFloat height = signBounds.origin.y + signBounds.size.height;
         
         UIGraphicsBeginImageContext(CGSizeMake(width, height));
+
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextFillRect(context, CGRectMake(0, 0, width, height));
+
         [pathLayer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage* signatureImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
